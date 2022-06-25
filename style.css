@@ -1,0 +1,16 @@
+svg {
+	height: 60vh;
+}
+
+@media (min-width: 576px) {
+	svg {
+		height: 80vh;
+	}
+}
+
+path {
+	stroke: #000;
+	fill: transparent;
+	/* transition: 0.5s;
+	cursor: pointer; */
+}
