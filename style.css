@@ -18,3 +18,30 @@ path {
 	/* transition: 0.5s;
 	cursor: pointer; */
 }
+
+.box {
+
+	height: 30px;
+	width: 80%;
+}
+
+.averageT {
+	background: linear-gradient(90deg, #107388, #217d94, #2e899c, #3b93a7, #4d9eb1,
+			#5ca9bd, #68b3c6, #77bfcd, #87cbd8, #95d4e3,
+			#a4e0eb, #b4e9f7, #0c924d, #1c9a53, #2fa257,
+			#41a95e, #53b163, #62bb6b, #74c16f, #84c976,
+			#96cf7e, #a5d984, #bbdf88, #cae68f, #d9f191,
+			#f2f4c5, #f7e68a, #f3d575, #f1c363, #edb24c,
+			#e99e39, #e48e29, #dd7d05, #f05334, #f1155b,
+			#ac0539, #760306, #9b68ad, #874f9a, #82249e);
+}
+
+.rain {
+	background: linear-gradient(90deg, #ffffff, #eaddea, #e5d5e5, #dfcadf, #d7bdd7,
+			#cdaccd, #c097c0, #b07db0, #9c5c9c, #833383,
+			#640064);
+}
+
+.uvi {
+	background: linear-gradient(90deg, #a7cd20, #ffa500, #f39800, #ea1904, #b34fa2);
+}

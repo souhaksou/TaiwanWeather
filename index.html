@@ -20,7 +20,7 @@
 <body>
     <!-- Vue 3.0 -->
     <div id="app">
-        <div class="container my-3 my-lg-5">
+        <div class="container mt-3 mt-lg-5">
             <div class="d-block d-lg-none pb-3">
                 <h2 class="text-center">天氣預報</h2>
             </div>
@@ -204,28 +204,40 @@
                     <div class="d-none d-lg-block mb-4">
                         <h2 class="text-center display-5">臺灣天氣預報</h2>
                     </div>
-                    <!-- <div class="col-8 col-lg-6 mb-4">
+                    <!-- 選單<div class="col-8 col-lg-6 mb-4">
                         <select class="form-select form-select-lg" v-model="selected" @change="render(selected)">
                             <option v-for="item in dataOptions" :value="item.key" :key="item.key">{{item.name}}</option>
                         </select>
                     </div> -->
-
                     <nav class="nav nav-pills flex-column flex-sm-row mb-3 mb-lg-5">
                         <a class="flex-sm-fill text-sm-center nav-link h4" href="#" v-for="item in dataOptions"
                             :class="{active:selected===item.key}" @click.prevent="render(item.key)" :value="item.key"
                             :key="item.key">{{item.name}}</a>
                     </nav>
-                    <div class="row mx-5">
-                        <div class="col-md-6 mb-3" v-for="item in cities" :key="item.name">
-                            <div class="row gx-0 text-end">
-                                <div class="col-6">{{item.name}}：</div>
-                                <div class="col-6">
-                                    <span v-if="selected==='averageT'">{{item.averageT}}&nbsp;&nbsp;度</span>
-                                    <span v-else-if="selected==='rain'">{{item.rain}}&nbsp;&nbsp;%</span>
-                                    <span v-else>{{item.uvi}}&nbsp;&nbsp;{{item.uvIndex}}</span>
-                                </div>
-                            </div>
-
+                    <div class="mb-3 mb-lg-4 w-100 px-5 d-flex justify-content-center">
+                        <div class="border border-dark box d-flex justify-content-between align-items-center"
+                            :class="selected">
+                            <template v-if="selected==='averageT'">
+                                <h5 class="text-white mb-0 ms-1">1°C</h5>
+                                <h5 class="text-white mb-0 me-1">40°C</h5>
+                            </template>
+                            <template v-else-if="selected==='rain'">
+                                <h5 class="text-dark mb-0 ms-1">0%</h5>
+                                <h5 class="text-white mb-0 me-1">100%</h5>
+                            </template>
+                            <template v-else>
+                                <h5 class="text-white mb-0 ms-1">0低量級</h5>
+                                <h5 class="text-white mb-0 me-1">11+危險級</h5>
+                            </template>
+                        </div>
+                    </div>
+                    <div class="row gx-0 gx-lg-5 mx-5">
+                        <div class="col-md-6 mb-3 d-flex justify-content-around" v-for="item in cities"
+                            :key="item.name">
+                            <div>{{item.name}}：</div>
+                            <div v-if="selected==='averageT'"><span class="mx-3">{{item.averageT}}</span>度</div>
+                            <div v-else-if="selected==='rain'"><span class="mx-3">{{item.rain}}</span></div>
+                            <div v-else><span class="mx-3">{{item.uvi}}</span>{{item.uvIndex}}</div>
                         </div>
                     </div>
                 </div>
