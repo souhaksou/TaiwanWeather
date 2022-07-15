@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -201,14 +204,20 @@
                     <div class="d-none d-lg-block mb-4">
                         <h2 class="text-center display-5">臺灣天氣預報</h2>
                     </div>
-                    <div class="col-8 col-lg-6 mb-4">
+                    <!-- <div class="col-8 col-lg-6 mb-4">
                         <select class="form-select form-select-lg" v-model="selected" @change="render(selected)">
                             <option v-for="item in dataOptions" :value="item.key" :key="item.key">{{item.name}}</option>
                         </select>
-                    </div>
+                    </div> -->
+
+                    <nav class="nav nav-pills flex-column flex-sm-row mb-3 mb-lg-5">
+                        <a class="flex-sm-fill text-sm-center nav-link h4" href="#" v-for="item in dataOptions"
+                            :class="{active:selected===item.key}" @click.prevent="render(item.key)" :value="item.key"
+                            :key="item.key">{{item.name}}</a>
+                    </nav>
                     <div class="row mx-5">
                         <div class="col-md-6 mb-3" v-for="item in cities" :key="item.name">
-                            <div class="row text-end">
+                            <div class="row gx-0 text-end">
                                 <div class="col-6">{{item.name}}：</div>
                                 <div class="col-6">
                                     <span v-if="selected==='averageT'">{{item.averageT}}&nbsp;&nbsp;度</span>
@@ -275,6 +284,7 @@
                         });
                 },
                 render(changeColor) {
+                    this.selected = changeColor;
                     for (const item in this.$refs) {
                         const itemColor = this.cities.filter((value) => {
                             return value.name === item;
@@ -338,8 +348,6 @@
                     this.render('averageT');
                     console.log(this.cities);
                 });
-            },
-            mounted() {
             },
         }).mount('#app');
     </script>
